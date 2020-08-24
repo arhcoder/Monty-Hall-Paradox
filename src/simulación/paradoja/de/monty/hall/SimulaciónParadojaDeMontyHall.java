@@ -3,9 +3,9 @@ package simulación.paradoja.de.monty.hall;
 public class SimulaciónParadojaDeMontyHall {
     
     public static void main(String[] args) {
-        String coche = "Coche";
-        String nada = "Nada";
-        String abierta = "Abierta";
+        String coche = "  Coche  ";
+        String nada = "   Nada  ";
+        String abierta = " Abierta ";
         int election = 1;
         int newElection = 1;
         int repeticiones = 10000;
@@ -14,8 +14,8 @@ public class SimulaciónParadojaDeMontyHall {
         int derrotas = 0;
         double porcentajeVictorias = 0;
         double porcentajeDerrotas = 0;
+        String resultado = "";
         int i;
-        boolean resultado;
         
         for (contador = 1; contador <= repeticiones; contador++)
         {
@@ -64,32 +64,37 @@ public class SimulaciónParadojaDeMontyHall {
             // Se abren las puertas, revelando el resultado y se suma la victoria o la derrota //
             if(Puertas[newElection].equals(coche))
             {
-                resultado = true;
+                resultado = "Ganado!";
                 victorias++;
             }
             else
             {
-                resultado = false;
+                resultado = "Perdido!";
                 derrotas++;
             }
             
-            // Pruebas de Impresión //
+            // Impresión de los resultados //
+            // Se les suma 1 a las variables de elección, para que se muestren
+            // del 1 al 3, en lugar de 0 a 2, como en el vector*
+            election++; newElection++;
             for (i = 0; i <= 2; i++)
             {
-                System.out.print("| "+ Puertas[i]);
+                System.out.print("| "+ Puertas[i] + " |");
             }
-            System.out.println("        Elección: " + election+"        Nueva Elección: " + newElection + "    "+resultado);
+            System.out.println("      Elección: Puerta " + election +
+            "      Nueva Elección: Puerta " + newElection + "    "+resultado);
         }
-        System.out.println("____________________________________");
+        System.out.println("");
+        System.out.println("______________________________________");
         System.out.println("RESULTADOS");
-        System.out.println("____________________________________");
-        System.out.println("VICTORIAS: " + victorias + "/" + repeticiones);
-        System.out.println("DERROTAS:  " + derrotas + "/" + repeticiones);
-        System.out.println("____________________________________");
+        System.out.println("______________________________________");
+        System.out.println("VICTORIAS: " + victorias + " de " + repeticiones);
+        System.out.println("DERROTAS:  " + derrotas + " de " + repeticiones);
+        System.out.println("______________________________________");
         porcentajeVictorias = (double) (victorias * 100) / repeticiones;
         porcentajeDerrotas =  (double) (derrotas * 100) / repeticiones;
-        System.out.println("VICTORIAS (%): " + porcentajeVictorias + "%");
-        System.out.println("DERROTAS: (%): " + porcentajeDerrotas + "%");
-        System.out.println("____________________________________");
+        System.out.println("VICTORIAS: " + porcentajeVictorias + "%");
+        System.out.println("DERROTAS:  " + porcentajeDerrotas + "%");
+        System.out.println("______________________________________");
     }
 }
