@@ -1,6 +1,6 @@
-package simulación.paradoja.de.monty.hall;
+package clases;
 
-public class SimulaciónParadojaDeMontyHall {
+public class Monty_Hall {
     
     public static void main(String[] args) {
         String coche = "  Coche  ";
